@@ -4,14 +4,10 @@ project(SortFilterProxyModel)
 
 set(CMAKE_CXX_STANDARD 17)
 
-if (NOT QT_VERSION_MAJOR)
-    set(QT_VERSION_MAJOR 5)
+find_package(Qt6 COMPONENTS Core Qml QUIET)
+if (NOT Qt6_FOUND)
+    find_package(Qt5 5.15 REQUIRED COMPONENTS Core Qml)
 endif()
-
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
-    Core
-    Qml
-)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # This is to find generated *.moc and *.h files in build dir
